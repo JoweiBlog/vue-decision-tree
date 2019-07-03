@@ -1,4 +1,4 @@
-# vdt
+# Vue decision tree
 
 ## Project setup
 ```

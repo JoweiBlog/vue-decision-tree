@@ -1,7 +1,7 @@
 {
-  "name": "vdt",
-  "version": "0.1.0",
-  "private": true,
+  "name": "vue-decision-tree",
+  "description": "Simple decision tree / relationship tree component",
+  "version": "1.0.0",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
