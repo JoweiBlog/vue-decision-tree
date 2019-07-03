@@ -1,5 +1,5 @@
-# Vue decision tree
-
+# vue-decision-tree
+🧐Simple decision tree / relationship tree component, for VueJS.
 ## Project setup
 ```
 npm install
