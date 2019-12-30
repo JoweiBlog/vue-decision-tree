@@ -1,55 +1,93 @@
 export default [
   {
-    name: 'Jowei',
-    render: 'box',
-    role: 'Leader',
+    label: "A",
     child: [
       {
-        name: 'Li Lei',
-        render: 'box',
-        role: 'Manager',
+        label: "AB",
         child: [
           {
-            name: 'Za Hong',
-            render: 'box',
-            role: 'Worker'
+            label: "ABA"
+          },
+          {
+            label: "ABB",
+            child: [
+              {
+                label: "ABBA"
+              }
+            ]
+          },
+          {
+            label: "ABC"
+          },
+          {
+            label: "ABD",
+            child: [
+              {
+                label: "ABDA",
+                child: [
+                  {
+                    label: "ABDAA"
+                  }
+                ]
+              },
+              {
+                label: "ABDB",
+                child: [
+                  {
+                    label: "ABDBA"
+                  },
+                  {
+                    label: "ABDBB"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
       {
-        name: 'Yan Che',
-        render: 'box',
-        role: 'Manager',
+        label: "AD",
         child: [
           {
-            name: 'Yu La',
-            render: 'box',
-            role: 'Worker'
+            label: "ADA",
+            child: [
+              {
+                label: "ADAA"
+              }
+            ]
           },
           {
-            name: 'Jo esf',
-            render: 'box',
-            role: 'Dev'
+            label: "ADB",
+            child: [
+              {
+                label: "ADBA"
+              },
+              {
+                label: "ADBB"
+              },
+              {
+                label: "ADBC",
+                child: [
+                  {
+                    label: "ADBCA"
+                  },
+                  {
+                    label: "ADBCB",
+                    child: [
+                      {
+                        label: "ADBCBA"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            name: 'Oel refr',
-            render: 'box',
-            role: 'Test'
-          }
-        ]
-      },
-      {
-        name: 'Du lye',
-        render: 'box',
-        role: 'Manager',
-        child: [
-          {
-            name: 'Zhe dl',
-            render: 'box',
-            role: 'Worker'
+            label: "ADC"
           }
         ]
       }
     ]
   }
-]
+];
