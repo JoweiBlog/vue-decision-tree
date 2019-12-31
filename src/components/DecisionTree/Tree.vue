@@ -5,6 +5,7 @@
       :node="child"
       :props="props"
       :key="child.key"
+      :position="position"
       :h-spacing="hSpacing"
       :v-spacing="vSpacing"
       :line-color="lineColor"
@@ -34,6 +35,13 @@ export default {
       default: () => []
     },
     renderContent: Function,
+    position: {
+      type: String,
+      default: "ltr",
+      validator: function(value) {
+        return ["ltr", "rtl", "ttb", "btt"].includes(value);
+      }
+    },
     hSpacing: { type: Number, default: 16 },
     vSpacing: { type: Number, default: 48 },
     lineColor: { type: String, default: "#000" },

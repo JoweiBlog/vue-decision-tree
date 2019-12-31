@@ -2,20 +2,23 @@
   <div
     class="decision-tree-node"
     ref="node"
-    :class="{
-      leaf: node.isLeaf,
-      root: node.level === 1,
-      alone: node.noSiblings
-    }"
-    :style="{
-      padding: hspace + 'px 0'
-    }"
+    :class="[
+      position,
+      {
+        leaf: node.isLeaf,
+        root: node.level === 1,
+        alone: node.noSiblings
+      }
+    ]"
+    :style="nodeStyle"
   >
     <!-- conn-line -->
-    <div
-      class="decision-tree-node-line"
-      :style="{ width: vspace + 'px', color: lineColor }"
-    ></div>
+    <div class="decision-tree-node-line" :style="lineStyle"></div>
+
+    <div class="decision-tree-node-content" :style="contentStyle">
+      <div class="decision-tree-node-sub-line" :style="lineStyle"></div>
+      <node-content :node="node"></node-content>
+    </div>
 
     <div class="decision-tree-node-children">
       <decision-node
@@ -24,21 +27,12 @@
         :key="child.key"
         :node="child"
         :props="props"
+        :position="position"
         :h-spacing="hSpacing"
         :v-spacing="vSpacing"
         :line-color="lineColor"
       >
       </decision-node>
-    </div>
-    <div
-      class="decision-tree-node-content"
-      :style="{ padding: '0 ' + vspace + 'px' }"
-    >
-      <div
-        class="decision-tree-node-sub-line"
-        :style="{ width: vspace + 'px', color: lineColor }"
-      ></div>
-      <node-content :node="node"></node-content>
     </div>
   </div>
 </template>
@@ -51,6 +45,7 @@ export default {
       default: () => ({})
     },
     props: {},
+    position: { default: 'ltr' },
     renderContent: Function,
     hSpacing: { default: 16 },
     vSpacing: { default: 48 },
@@ -62,6 +57,49 @@ export default {
     },
     vspace() {
       return this.vSpacing / 2;
+    },
+    vertical() {
+      return ['ttb', 'btt'].includes(this.position)
+    },
+    horizontal() {
+      return ['ltr', 'rtl'].includes(this.position)
+    },
+    lineStyle() {
+      let style = { color: this.lineColor }
+
+      if (this.horizontal) {
+        style.width = `${this.hspace}px`
+      } else {
+        style.height = `${this.vspace}px`
+      }
+
+      return style
+    },
+    nodeStyle() {
+      let style = {}
+
+      if (this.horizontal) {
+        style.paddingTop = `${this.vspace}px`
+        style.paddingBottom = `${this.vspace}px`
+      } else {
+        style.paddingLeft = `${this.hspace}px`
+        style.paddingRight = `${this.hspace}px`
+      }
+
+      return style
+    },
+    contentStyle() {
+      let style = {}
+
+      if (this.horizontal) {
+        style.paddingLeft = `${this.hspace}px`
+        style.paddingRight = `${this.hspace}px`
+      } else {
+        style.paddingTop = `${this.vspace}px`
+        style.paddingBottom = `${this.vspace}px`
+      }
+
+      return style
     }
   },
   components: {
@@ -103,122 +141,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.decision-tree-node {
-  position: relative;
-  display: flex;
-  align-items: center;
-
-  .decision-tree-node-line {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    bottom: 0;
-
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      height: 50%;
-      right: 0;
-      border-style: solid;
-    }
-
-    &::before {
-      top: 0;
-      border-width: 0 0 1px 1px;
-    }
-
-    &::after {
-      bottom: 0;
-      border-width: 0 0 0 1px;
-    }
-  }
-
-  &:first-of-type {
-    > .decision-tree-node-line {
-      &::before {
-        border-width: 0 0 0 0;
-      }
-
-      &::after {
-        bottom: -1px;
-        border-width: 1px 0 0 1px;
-        border-top-left-radius: 3px;
-      }
-    }
-  }
-
-  &:last-of-type {
-    > .decision-tree-node-line {
-      &::before {
-        border-width: 0 0 1px 1px;
-        border-bottom-left-radius: 3px;
-      }
-
-      &::after {
-        border-width: 0 0 0 0;
-      }
-    }
-  }
-
-  &.alone {
-    &:last-of-type {
-      > .decision-tree-node-line {
-        &::before {
-          border-width: 0 0 1px 0;
-          border-bottom-left-radius: 0;
-        }
-
-        &::after {
-          border-width: 0 0 0 0;
-        }
-      }
-    }
-  }
-
-  &.leaf {
-    > .decision-tree-node-content {
-      .decision-tree-node-sub-line {
-        &::after {
-          display: none;
-        }
-      }
-    }
-  }
-
-  &.root {
-    > .decision-tree-node-line {
-      &::before,
-      &::after {
-        display: none;
-      }
-    }
-  }
-}
-
-.decision-tree-node-content {
-  position: relative;
-  color: #000;
-
-  .decision-tree-node-sub-line {
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: -1;
-    bottom: 0;
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      height: 1px;
-      border-bottom: 1px solid;
-      box-sizing: border-box;
-    }
-  }
-}
+@import "./node.scss";
 </style>

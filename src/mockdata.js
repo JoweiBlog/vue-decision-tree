@@ -12,7 +12,15 @@ export default [
             label: "ABB",
             child: [
               {
-                label: "ABBA"
+                label: "ABBA",
+                child: [
+                  {
+                    label: "ABBAA"
+                  },
+                  {
+                    label: "ABBAB"
+                  }
+                ]
               }
             ]
           },

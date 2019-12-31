@@ -1,0 +1,402 @@
+.decision-tree-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &.ltr,
+  &.rtl {
+    .decision-tree-node-line {
+      top: 0;
+      bottom: 0;
+
+      &::before,
+      &::after {
+        left: 0;
+        height: 50%;
+        right: 0;
+      }
+
+      &::before {
+        top: 0;
+      }
+
+      &::after {
+        bottom: 0;
+      }
+    }
+
+    .decision-tree-node-content {
+      .decision-tree-node-sub-line {
+        top: 0;
+        bottom: 0;
+
+        &::after {
+          left: 0;
+          right: 0;
+          top: 50%;
+          height: 1px;
+          border-bottom: 1px solid;
+        }
+      }
+    }
+
+    &:first-of-type {
+      > .decision-tree-node-line {
+        &::after {
+          bottom: -1px;
+        }
+      }
+    }
+
+    &.alone {
+      &:last-of-type {
+        > .decision-tree-node-line {
+          &::before {
+            border-width: 0 0 1px 0;
+          }
+        }
+      }
+    }
+  }
+
+  &.ttb,
+  &.btt {
+    .decision-tree-node-children {
+      display: flex;
+    }
+
+    .decision-tree-node-line {
+      left: 0;
+      right: 0;
+
+      &::before,
+      &::after {
+        top: 0;
+        width: 50%;
+        bottom: 0;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+      }
+    }
+
+    .decision-tree-node-content {
+      .decision-tree-node-sub-line {
+        left: 0;
+        right: 0;
+
+        &::after {
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          width: 1px;
+          border-right: 1px solid;
+        }
+      }
+    }
+
+    &:first-of-type {
+      > .decision-tree-node-line {
+        &::after {
+          right: -1px;
+        }
+      }
+    }
+
+    &.alone {
+      &:last-of-type {
+        > .decision-tree-node-line {
+          &::before {
+            border-width: 0 1px 0 0;
+          }
+        }
+      }
+    }
+  }
+
+  &.ltr {
+    flex-flow: row nowrap;
+
+    .decision-tree-node-line {
+      left: 0;
+
+      &::before {
+        border-width: 0 0 1px 1px;
+      }
+
+      &::after {
+        border-width: 0 0 0 1px;
+      }
+    }
+
+    .decision-tree-node-content {
+      .decision-tree-node-sub-line {
+        right: 0;
+      }
+    }
+
+    &:first-of-type {
+      > .decision-tree-node-line {
+        &::after {
+          border-width: 1px 0 0 1px;
+          border-top-left-radius: 3px;
+        }
+      }
+    }
+
+    &:last-of-type {
+      > .decision-tree-node-line {
+        &::before {
+          border-width: 0 0 1px 1px;
+          border-bottom-left-radius: 3px;
+        }
+      }
+    }
+
+    &.alone {
+      &:last-of-type {
+        > .decision-tree-node-line {
+          &::before {
+            border-bottom-left-radius: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &.rtl {
+    flex-flow: row-reverse nowrap;
+
+    .decision-tree-node-line {
+      right: 0;
+
+      &::before {
+        border-width: 0 1px 1px 0;
+      }
+
+      &::after {
+        border-width: 0 1px 0 0;
+      }
+    }
+
+    .decision-tree-node-content {
+      .decision-tree-node-sub-line {
+        left: 0;
+      }
+    }
+
+    &:first-of-type {
+      > .decision-tree-node-line {
+        &::after {
+          border-width: 1px 1px 0 0;
+          border-top-right-radius: 3px;
+        }
+      }
+    }
+
+    &:last-of-type {
+      > .decision-tree-node-line {
+        &::before {
+          border-width: 0 1px 1px 0;
+          border-bottom-right-radius: 3px;
+        }
+      }
+    }
+
+    &.alone {
+      &:last-of-type {
+        > .decision-tree-node-line {
+          &::before {
+            border-bottom-right-radius: 0;
+          }
+        }
+      }
+    }
+
+    &.root {
+      justify-content: flex-end;
+    }
+  }
+
+  &.ttb {
+    flex-flow: column nowrap;
+
+    .decision-tree-node-line {
+      top: 0;
+
+      &::before {
+        border-width: 1px 1px 0 0;
+      }
+
+      &::after {
+        border-width: 1px 0 0 0;
+      }
+    }
+
+    .decision-tree-node-content {
+      .decision-tree-node-sub-line {
+        bottom: 0;
+      }
+    }
+
+    &:first-of-type {
+      > .decision-tree-node-line {
+        &::after {
+          border-width: 1px 0 0 1px;
+          border-top-left-radius: 3px;
+        }
+      }
+    }
+
+    &:last-of-type {
+      > .decision-tree-node-line {
+        &::before {
+          border-width: 1px 1px 0 0;
+          border-top-right-radius: 3px;
+        }
+      }
+    }
+
+    &.alone {
+      &:last-of-type {
+        > .decision-tree-node-line {
+          &::before {
+            border-top-right-radius: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &.btt {
+    flex-flow: column-reverse nowrap;
+
+    .decision-tree-node-line {
+      bottom: 0;
+
+      &::before {
+        border-width: 0 1px 1px 0;
+      }
+
+      &::after {
+        border-width: 0 0 1px 0;
+      }
+    }
+
+    .decision-tree-node-content {
+      .decision-tree-node-sub-line {
+        top: 0;
+      }
+    }
+
+    &:first-of-type {
+      > .decision-tree-node-line {
+        &::after {
+          border-width: 0 0 1px 1px;
+          border-bottom-left-radius: 3px;
+        }
+      }
+    }
+
+    &:last-of-type {
+      > .decision-tree-node-line {
+        &::before {
+          border-width: 0 1px 1px 0;
+          border-bottom-right-radius: 3px;
+        }
+      }
+    }
+
+    &.alone {
+      &:last-of-type {
+        > .decision-tree-node-line {
+          &::before {
+            border-bottom-right-radius: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .decision-tree-node-line {
+    position: absolute;
+    z-index: -1;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      border-style: solid;
+    }
+  }
+
+  .decision-tree-node-content {
+    position: relative;
+    color: #000;
+
+    .decision-tree-node-sub-line {
+      position: absolute;
+      z-index: -1;
+
+      &::after {
+        content: "";
+        position: absolute;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  &:first-of-type {
+    > .decision-tree-node-line {
+      &::before {
+        border-width: 0 0 0 0;
+      }
+    }
+  }
+
+  &:last-of-type {
+    > .decision-tree-node-line {
+      &::after {
+        border-width: 0 0 0 0;
+      }
+    }
+  }
+
+  &.alone {
+    &:last-of-type {
+      > .decision-tree-node-line {
+        &::before {
+          border-width: 0 0 1px 0;
+        }
+
+        &::after {
+          border-width: 0 0 0 0;
+        }
+      }
+    }
+  }
+
+  &.leaf {
+    > .decision-tree-node-content {
+      .decision-tree-node-sub-line {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.root {
+    > .decision-tree-node-line {
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

@@ -2,11 +2,24 @@
   <div id="app">
     <div>
       hSpacing:
-      <input type="range" v-model="hSpacing" />
+      <input type="range" min="0" max="100" v-model="hSpacing" />
     </div>
     <div>
       vSpacing:
-      <input type="range" v-model="vSpacing" />
+      <input type="range" min="0" max="100" v-model="vSpacing" />
+    </div>
+    <div>
+      position:
+      <span v-for="ps in pos" :key="ps">
+        <input
+          type="radio"
+          :id="ps"
+          name="pos"
+          v-model="position"
+          :value="ps"
+        />
+        <label :for="ps">{{ ps }}</label>
+      </span>
     </div>
     <div>
       lineColor:
@@ -27,6 +40,7 @@
       :h-spacing="hSpacing * 1"
       :v-spacing="vSpacing * 1"
       :line-color="lineColor"
+      :position="position"
       :props="{
         children: 'child'
       }"
@@ -49,7 +63,9 @@ export default {
       mockData: MockData,
       hSpacing: 16,
       vSpacing: 40,
+      position: "ltr",
       lineColor: "#000",
+      pos: ["ltr", "rtl", "ttb", "btt"],
       colors: ["#000", "#00f", "#0f0", "#f00"]
     };
   }
