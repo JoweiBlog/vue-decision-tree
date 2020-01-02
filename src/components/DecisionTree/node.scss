@@ -1,11 +1,19 @@
-.decision-tree-node {
+// 线样式
+$border-style: solid;
+// 线宽
+$border-width: 1px;
+// 弧度
+$border-radius: 3px;
+
+.vue-decision-tree-node {
+  $node: &;
   position: relative;
   display: flex;
   align-items: center;
 
   &.ltr,
   &.rtl {
-    .decision-tree-node-line {
+    #{$node}-line {
       top: 0;
       bottom: 0;
 
@@ -25,8 +33,8 @@
       }
     }
 
-    .decision-tree-node-content {
-      .decision-tree-node-sub-line {
+    #{$node}-content {
+      #{$node}-sub-line {
         top: 0;
         bottom: 0;
 
@@ -34,25 +42,25 @@
           left: 0;
           right: 0;
           top: 50%;
-          height: 1px;
-          border-bottom: 1px solid;
+          height: $border-width;
+          border-width: 0 0 $border-width 0;
         }
       }
     }
 
     &:first-of-type {
-      > .decision-tree-node-line {
+      > #{$node}-line {
         &::after {
-          bottom: -1px;
+          bottom: -$border-width;
         }
       }
     }
 
     &.alone {
       &:last-of-type {
-        > .decision-tree-node-line {
+        > #{$node}-line {
           &::before {
-            border-width: 0 0 1px 0;
+            border-width: 0 0 $border-width 0;
           }
         }
       }
@@ -61,11 +69,11 @@
 
   &.ttb,
   &.btt {
-    .decision-tree-node-children {
+    #{$node}-children {
       display: flex;
     }
 
-    .decision-tree-node-line {
+    #{$node}-line {
       left: 0;
       right: 0;
 
@@ -85,8 +93,8 @@
       }
     }
 
-    .decision-tree-node-content {
-      .decision-tree-node-sub-line {
+    #{$node}-content {
+      #{$node}-sub-line {
         left: 0;
         right: 0;
 
@@ -94,25 +102,25 @@
           top: 0;
           bottom: 0;
           left: 50%;
-          width: 1px;
-          border-right: 1px solid;
+          width: $border-width;
+          border-width: 0 $border-width 0 0;
         }
       }
     }
 
     &:first-of-type {
-      > .decision-tree-node-line {
+      > #{$node}-line {
         &::after {
-          right: -1px;
+          right: -$border-width;
         }
       }
     }
 
     &.alone {
       &:last-of-type {
-        > .decision-tree-node-line {
+        > #{$node}-line {
           &::before {
-            border-width: 0 1px 0 0;
+            border-width: 0 $border-width 0 0;
           }
         }
       }
@@ -122,45 +130,45 @@
   &.ltr {
     flex-flow: row nowrap;
 
-    .decision-tree-node-line {
+    #{$node}-line {
       left: 0;
 
       &::before {
-        border-width: 0 0 1px 1px;
+        border-width: 0 0 $border-width $border-width;
       }
 
       &::after {
-        border-width: 0 0 0 1px;
+        border-width: 0 0 0 $border-width;
       }
     }
 
-    .decision-tree-node-content {
-      .decision-tree-node-sub-line {
+    #{$node}-content {
+      #{$node}-sub-line {
         right: 0;
       }
     }
 
     &:first-of-type {
-      > .decision-tree-node-line {
+      > #{$node}-line {
         &::after {
-          border-width: 1px 0 0 1px;
-          border-top-left-radius: 3px;
+          border-width: $border-width 0 0 $border-width;
+          border-top-left-radius: $border-radius;
         }
       }
     }
 
     &:last-of-type {
-      > .decision-tree-node-line {
+      > #{$node}-line {
         &::before {
-          border-width: 0 0 1px 1px;
-          border-bottom-left-radius: 3px;
+          border-width: 0 0 $border-width $border-width;
+          border-bottom-left-radius: $border-radius;
         }
       }
     }
 
     &.alone {
       &:last-of-type {
-        > .decision-tree-node-line {
+        > #{$node}-line {
           &::before {
             border-bottom-left-radius: 0;
           }
@@ -172,45 +180,45 @@
   &.rtl {
     flex-flow: row-reverse nowrap;
 
-    .decision-tree-node-line {
+    #{$node}-line {
       right: 0;
 
       &::before {
-        border-width: 0 1px 1px 0;
+        border-width: 0 $border-width $border-width 0;
       }
 
       &::after {
-        border-width: 0 1px 0 0;
+        border-width: 0 $border-width 0 0;
       }
     }
 
-    .decision-tree-node-content {
-      .decision-tree-node-sub-line {
+    #{$node}-content {
+      #{$node}-sub-line {
         left: 0;
       }
     }
 
     &:first-of-type {
-      > .decision-tree-node-line {
+      > #{$node}-line {
         &::after {
-          border-width: 1px 1px 0 0;
-          border-top-right-radius: 3px;
+          border-width: $border-width $border-width 0 0;
+          border-top-right-radius: $border-radius;
         }
       }
     }
 
     &:last-of-type {
-      > .decision-tree-node-line {
+      > #{$node}-line {
         &::before {
-          border-width: 0 1px 1px 0;
-          border-bottom-right-radius: 3px;
+          border-width: 0 $border-width $border-width 0;
+          border-bottom-right-radius: $border-radius;
         }
       }
     }
 
     &.alone {
       &:last-of-type {
-        > .decision-tree-node-line {
+        > #{$node}-line {
           &::before {
             border-bottom-right-radius: 0;
           }
@@ -226,45 +234,45 @@
   &.ttb {
     flex-flow: column nowrap;
 
-    .decision-tree-node-line {
+    #{$node}-line {
       top: 0;
 
       &::before {
-        border-width: 1px 1px 0 0;
+        border-width: $border-width $border-width 0 0;
       }
 
       &::after {
-        border-width: 1px 0 0 0;
+        border-width: $border-width 0 0 0;
       }
     }
 
-    .decision-tree-node-content {
-      .decision-tree-node-sub-line {
+    #{$node}-content {
+      #{$node}-sub-line {
         bottom: 0;
       }
     }
 
     &:first-of-type {
-      > .decision-tree-node-line {
+      > #{$node}-line {
         &::after {
-          border-width: 1px 0 0 1px;
-          border-top-left-radius: 3px;
+          border-width: $border-width 0 0 $border-width;
+          border-top-left-radius: $border-radius;
         }
       }
     }
 
     &:last-of-type {
-      > .decision-tree-node-line {
+      > #{$node}-line {
         &::before {
-          border-width: 1px 1px 0 0;
-          border-top-right-radius: 3px;
+          border-width: $border-width $border-width 0 0;
+          border-top-right-radius: $border-radius;
         }
       }
     }
 
     &.alone {
       &:last-of-type {
-        > .decision-tree-node-line {
+        > #{$node}-line {
           &::before {
             border-top-right-radius: 0;
           }
@@ -276,45 +284,45 @@
   &.btt {
     flex-flow: column-reverse nowrap;
 
-    .decision-tree-node-line {
+    #{$node}-line {
       bottom: 0;
 
       &::before {
-        border-width: 0 1px 1px 0;
+        border-width: 0 $border-width $border-width 0;
       }
 
       &::after {
-        border-width: 0 0 1px 0;
+        border-width: 0 0 $border-width 0;
       }
     }
 
-    .decision-tree-node-content {
-      .decision-tree-node-sub-line {
+    #{$node}-content {
+      #{$node}-sub-line {
         top: 0;
       }
     }
 
     &:first-of-type {
-      > .decision-tree-node-line {
+      > #{$node}-line {
         &::after {
-          border-width: 0 0 1px 1px;
-          border-bottom-left-radius: 3px;
+          border-width: 0 0 $border-width $border-width;
+          border-bottom-left-radius: $border-radius;
         }
       }
     }
 
     &:last-of-type {
-      > .decision-tree-node-line {
+      > #{$node}-line {
         &::before {
-          border-width: 0 1px 1px 0;
-          border-bottom-right-radius: 3px;
+          border-width: 0 $border-width $border-width 0;
+          border-bottom-right-radius: $border-radius;
         }
       }
     }
 
     &.alone {
       &:last-of-type {
-        > .decision-tree-node-line {
+        > #{$node}-line {
           &::before {
             border-bottom-right-radius: 0;
           }
@@ -323,7 +331,7 @@
     }
   }
 
-  .decision-tree-node-line {
+  #{$node}-line {
     position: absolute;
     z-index: -1;
 
@@ -331,15 +339,15 @@
     &::after {
       content: "";
       position: absolute;
-      border-style: solid;
+      border-style: $border-style;
     }
   }
 
-  .decision-tree-node-content {
+  #{$node}-content {
     position: relative;
     color: #000;
 
-    .decision-tree-node-sub-line {
+    #{$node}-sub-line {
       position: absolute;
       z-index: -1;
 
@@ -347,12 +355,13 @@
         content: "";
         position: absolute;
         box-sizing: border-box;
+        border-style: $border-style;
       }
     }
   }
 
   &:first-of-type {
-    > .decision-tree-node-line {
+    > #{$node}-line {
       &::before {
         border-width: 0 0 0 0;
       }
@@ -360,7 +369,7 @@
   }
 
   &:last-of-type {
-    > .decision-tree-node-line {
+    > #{$node}-line {
       &::after {
         border-width: 0 0 0 0;
       }
@@ -369,9 +378,9 @@
 
   &.alone {
     &:last-of-type {
-      > .decision-tree-node-line {
+      > #{$node}-line {
         &::before {
-          border-width: 0 0 1px 0;
+          border-width: 0 0 $border-width 0;
         }
 
         &::after {
@@ -382,8 +391,8 @@
   }
 
   &.leaf {
-    > .decision-tree-node-content {
-      .decision-tree-node-sub-line {
+    > #{$node}-content {
+      #{$node}-sub-line {
         &::after {
           display: none;
         }
@@ -392,7 +401,7 @@
   }
 
   &.root {
-    > .decision-tree-node-line {
+    > #{$node}-line {
       &::before,
       &::after {
         display: none;

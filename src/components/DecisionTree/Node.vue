@@ -1,6 +1,6 @@
 <template>
   <div
-    class="decision-tree-node"
+    class="vue-decision-tree-node"
     ref="node"
     :class="[
       position,
@@ -13,14 +13,14 @@
     :style="nodeStyle"
   >
     <!-- conn-line -->
-    <div class="decision-tree-node-line" :style="lineStyle"></div>
+    <div class="vue-decision-tree-node-line" :style="lineStyle"></div>
 
-    <div class="decision-tree-node-content" :style="contentStyle">
-      <div class="decision-tree-node-sub-line" :style="lineStyle"></div>
+    <div class="vue-decision-tree-node-content" :style="contentStyle">
+      <div class="vue-decision-tree-node-sub-line" :style="lineStyle"></div>
       <node-content :node="node"></node-content>
     </div>
 
-    <div class="decision-tree-node-children">
+    <div class="vue-decision-tree-node-children">
       <decision-node
         :render-content="renderContent"
         v-for="child in node.childNodes"
@@ -140,6 +140,6 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import "./node.scss";
 </style>
