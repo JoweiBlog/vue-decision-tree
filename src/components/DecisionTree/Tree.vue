@@ -5,7 +5,7 @@
       :node="child"
       :props="props"
       :key="child.key"
-      :position="position"
+      :direction="direction"
       :h-spacing="hSpacing"
       :v-spacing="vSpacing"
       :line-color="lineColor"
@@ -35,7 +35,7 @@ export default {
       default: () => []
     },
     renderContent: Function,
-    position: {
+    direction: {
       type: String,
       default: "ltr",
       validator: function(value) {

@@ -3,7 +3,7 @@
     class="vue-decision-tree-node"
     ref="node"
     :class="[
-      position,
+      direction,
       {
         leaf: node.isLeaf,
         root: node.level === 1,
@@ -27,7 +27,7 @@
         :key="child.key"
         :node="child"
         :props="props"
-        :position="position"
+        :direction="direction"
         :h-spacing="hSpacing"
         :v-spacing="vSpacing"
         :line-color="lineColor"
@@ -45,7 +45,7 @@ export default {
       default: () => ({})
     },
     props: {},
-    position: { default: 'ltr' },
+    direction: { default: 'ltr' },
     renderContent: Function,
     hSpacing: { default: 16 },
     vSpacing: { default: 48 },
@@ -59,10 +59,10 @@ export default {
       return this.vSpacing / 2;
     },
     vertical() {
-      return ['ttb', 'btt'].includes(this.position)
+      return ['ttb', 'btt'].includes(this.direction)
     },
     horizontal() {
-      return ['ltr', 'rtl'].includes(this.position)
+      return ['ltr', 'rtl'].includes(this.direction)
     },
     lineStyle() {
       let style = { color: this.lineColor }
