@@ -28,3 +28,8 @@ Mainly relies on CSS Flexible Box. See compatibility: https://caniuse.com/#searc
 | lineColor   | `String`|  defaults to #000     |
 | direction   | `String` | options: ltr / rtl / ttb / btt, defaults to ltr     |
   
+### # slot
+| Props | Description                    |
+| ------------- | ------------------------------ |
+| `-`     | Custom content for the node, the scope parameter is { node, data }    |
+  
