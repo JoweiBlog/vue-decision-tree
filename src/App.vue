@@ -8,10 +8,22 @@
       :line-color.sync="lineColor"
     ></options>
 
-    <decision-tree
+    <!-- <decision-tree
       :data="mockData"
       :h-spacing="hSpacing * 1"
       :v-spacing="vSpacing * 1"
+      :line-color="lineColor"
+      :direction="direction"
+      :props="{
+        children: 'child'
+      }"
+    >
+    </decision-tree> -->
+
+    <decision-tree
+      :data="mockData"
+      :h-spacing="hSpacing"
+      :v-spacing="vSpacing"
       :line-color="lineColor"
       :direction="direction"
       :props="{
