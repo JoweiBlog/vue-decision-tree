@@ -1,6 +1,8 @@
 # vue-decision-tree
 🧐Simple decision tree / relationship tree component, for VueJS.
 
+Mainly relies on CSS Flexible Box. See compatibility: https://caniuse.com/#search=Flexible
+
 ### # demo
  https://joweiblog.github.io/vue-decision-tree/
 
