@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import NodeModal from "./nodeModal";
+import NodeModel from "./nodeModel";
 import DecisionNode from "./Node";
 
 export default {
@@ -57,7 +57,7 @@ export default {
   methods: {},
   mounted() {
     this.isRoot = true;
-    this.root = new NodeModal({
+    this.root = new NodeModel({
       data: this.data,
       props: this.props
     });

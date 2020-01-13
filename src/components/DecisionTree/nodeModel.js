@@ -1,7 +1,7 @@
 let nodeId = 0;
 const NODE_KEY = "$nodeKey";
 
-export default class NodeModal {
+export default class nodeModel {
   constructor(options) {
     this.id = nodeId++;
     this.data = options.data || null;
@@ -58,7 +58,7 @@ export default class NodeModal {
 
     for (let i = 0, j = children.length; i < j; i++) {
       this.childNodes.push(
-        new NodeModal({
+        new nodeModel({
           data: children[i],
           props,
           parent: this
