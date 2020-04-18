@@ -27,6 +27,7 @@ Mainly relies on CSS Flexible Box. See compatibility: https://caniuse.com/#searc
 | vSpacing   | `Number`| vertical spacing, defaults to 48 (px)   |
 | lineColor   | `String`|  defaults to #000     |
 | direction   | `String` | options: ltr / rtl / ttb / btt, defaults to ltr     |
+| props   | `Object` | defaults to { children: 'children', label: 'label' }     |
   
 ### # slot
 | Props | Description                    |
