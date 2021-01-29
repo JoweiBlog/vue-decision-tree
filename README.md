@@ -30,7 +30,7 @@ Use:
 </template>
 
 <script>
-  import VueDecisionTree from 'vue-decision-tree'
+  import DecisionTree from 'vue-decision-tree'
   
   export default {
     components: { DecisionTree },
