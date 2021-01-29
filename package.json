@@ -1,7 +1,7 @@
 {
   "name": "vue-decision-tree",
   "description": "Simple decision tree / relationship tree component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "jowei <joweiblog@163.com>",
   "main": "dist/vue-decision-tree.umd.min.js",
   "homepage": "https://github.com/JoweiBlog/vue-decision-tree",
