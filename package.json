@@ -2,10 +2,16 @@
   "name": "vue-decision-tree",
   "description": "Simple decision tree / relationship tree component",
   "version": "1.0.0",
+  "author": "Jowei",
+  "keyword": "vue decision tree",
+  "main": "dist/vue-decision-tree.umd.min.js",
+  "private": false,
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name vue-decision-tree src/components/DecisionTree/index.js"
   },
   "dependencies": {
     "core-js": "^2.6.5",
