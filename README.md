@@ -3,20 +3,52 @@
 
 Mainly relies on CSS Flexible Box. See compatibility: https://caniuse.com/#search=Flexible
 
-### # demo
- https://joweiblog.github.io/vue-decision-tree/
+[Live demo here](https://joweiblog.github.io/vue-decision-tree/)
 
-### # use
+Install:
 
-``` html
-  <decision-tree
-    :data="mockData"
-    :h-spacing="48"
-    :v-spacing="24"
-    line-color="#000"
-    direction="ltr"
-  >
-  </decision-tree>
+```bash
+npm i vue-decision-tree -S
+```
+
+Use:
+
+```vue
+<template>
+  <div>
+    <decision-tree :data="mockData"/>
+    
+    
+    <!-- <decision-tree
+      :data="mockData"
+      #default="{ node, data }"
+    >
+      <template>
+        <span>{{ data.label }}</span>
+      </template>
+    </decision-tree> -->
+    
+  </div>
+</template>
+
+<script>
+  import VueDecisionTree from 'vue-decision-tree'
+  
+  export default {
+   components: { DecisionTree },
+
+   data() {
+     return {
+       mockData: [
+         {
+           label: '1',
+           children: [{ label: '12' }, { label: '13' }],
+         },
+       ],
+     }
+   },
+ }
+</script>
 ```
 
 ### # props
