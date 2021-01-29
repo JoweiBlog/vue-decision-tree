@@ -18,7 +18,6 @@ Use:
   <div>
     <decision-tree :data="mockData"/>
     
-    
     <!-- <decision-tree
       :data="mockData"
       #default="{ node, data }"
@@ -27,7 +26,6 @@ Use:
         <span>{{ data.label }}</span>
       </template>
     </decision-tree> -->
-    
   </div>
 </template>
 
@@ -35,19 +33,19 @@ Use:
   import VueDecisionTree from 'vue-decision-tree'
   
   export default {
-   components: { DecisionTree },
+    components: { DecisionTree },
 
-   data() {
-     return {
-       mockData: [
-         {
-           label: '1',
-           children: [{ label: '12' }, { label: '13' }],
-         },
-       ],
-     }
-   },
- }
+    data() {
+      return {
+        mockData: [
+          {
+            label: '1',
+            children: [{ label: '12' }, { label: '13' }],
+          },
+        ],
+      }
+    },
+  }
 </script>
 ```
 
