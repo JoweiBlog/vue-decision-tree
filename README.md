@@ -51,7 +51,7 @@ Use:
 </script>
 ```
 
-### # props
+props
 | Props | Type | Description                    |
 | ------------- | --- | ------------------------------ |
 | data      | `Array` | data      |
@@ -61,7 +61,7 @@ Use:
 | direction   | `String` | options: ltr / rtl / ttb / btt, defaults to ltr     |
 | props   | `Object` | defaults to { children: 'children', label: 'label' }     |
   
-### # slot
+slot
 | Props | Description                    |
 | ------------- | ------------------------------ |
 | `-`     | Custom content for the node, the scope parameter is { node, data }    |
